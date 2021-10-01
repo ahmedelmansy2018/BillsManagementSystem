@@ -8,7 +8,7 @@ namespace DBModel.Entities
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int DTLCOD { get; set; }
+        public int DTLCOD { get; set;  }
         [Required(ErrorMessage = "Please add  Data.")]
         [Display(Name = "Item Price")]
         [Column(TypeName = "decimal(10, 2)")]
