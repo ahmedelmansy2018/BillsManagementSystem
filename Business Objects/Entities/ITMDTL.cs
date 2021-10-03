@@ -4,9 +4,9 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 
-namespace DBModel.Entities
+namespace Business_Objects
 {
-    class ITMDTL
+    public class ITMDTL
     {
         //  Items Table
         
@@ -16,6 +16,7 @@ namespace DBModel.Entities
 
         [Required(ErrorMessage = "Please add  Item name.")]
         [Display(Name = "Item name")]
+        [Column(TypeName = "nvarchar(100)")]
         public string ITMNAM { get; set; }
 
         [Required(ErrorMessage = "Please add  Item Price.")]

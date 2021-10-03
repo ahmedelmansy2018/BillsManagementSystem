@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 namespace Business_Objects.Interfaces.Services
 {
-    interface IWorkService<T> where T : class
+    public interface IWorkService<T> where T : class
     {
         
         ///
