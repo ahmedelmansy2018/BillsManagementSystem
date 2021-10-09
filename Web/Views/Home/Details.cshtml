@@ -68,12 +68,7 @@
                     <td>
                         @Html.DisplayFor(modelItem => item.ITMNAM)
                     </td>
-                    <td>
-                        @*<i class="fas fa-edit"></i>*@
-                        <a asp-action="Edit" class="btn btn-outline-dark" asp-route-id="@item.DTLCOD">Edit</a> |
-                        <a asp-action="Details" class="btn btn-outline-info" asp-route-id="@item.DTLCOD">Details</a> |
-                        <a asp-action="Delete" class="btn btn-outline-danger" asp-route-id="@item.DTLCOD">Delete</a>
-                    </td>
+                   
                 </tr>
             }
         </tbody>
