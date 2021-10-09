@@ -334,7 +334,7 @@ function DeleteBilDeltials(obj) {
 }
 
 
- 
+
 
 function isPricevalide() {
 
@@ -360,7 +360,7 @@ function isvendorvalide() {
     $(document).ready(function () {
 
         var ItemPrice = document.getElementById('ITMPRC');
-        var itenQty = document.getElementById('ITMQTY');
+        var itemQty   = document.getElementById('ITMQTY');
 
         var BILDAT = document.getElementById('BILDAT');
         var VNDCOD = document.getElementById('VNDCOD');
@@ -421,12 +421,35 @@ function isvendorvalide() {
 
         });
 
+        $("#ITMPRC").blur(function () {
+            if (!isDatavalide()) {
 
+                ItemPrice.focus();
+                ItemPrice.select();
+                ITMPRCerror.style.display = 'block';
+                ItemPrice.classList.add("error");
+            } else {
+                ITMPRCerror.style.display = 'none';
+                ItemPrice.classList.remove("error");
+            }
 
+        });// end of  test
 
+        $("#ITMQTY").blur(function () {
 
+            if (!isQTYvalide()) {
 
+                itemQty.focus();
+                itemQty.select();
+                ITMQTYerror.style.display = 'block';
+                itemQty.classList.add("error");
+            } else {
+                ITMQTYerror.style.display = 'none';
+                itemQty.classList.remove("error");
+            }
+        });// 
 
+      
     $("#Div2").hide();
     $("#Div3").hide();
     $("#Div4").hide();
@@ -457,7 +480,21 @@ function isvendorvalide() {
     var itemPrice = $("#ITMPRC").val();
     var itemQTY = $("#ITMQTY").val();
     var ITMCOD = $("#ITMCOD").val();
+        if (!(isPricevalide() && isQTYvalide())) {
 
+            if (!isPricevalide()) {
+                ITMPRCerror.style.display = 'block';
+                ItemPrice.classList.add("error");
+
+            }
+            if (!isQTYvalide()) {
+                ITMQTYerror.style.display = 'block';
+                itemQty.classList.add("error");
+
+            }
+            data.preventDefault();
+
+        }
     $.ajax({
         url: "https://localhost:44317/Home/IsNameItemsAvailable",
     type: "POST",
@@ -499,7 +536,8 @@ function isvendorvalide() {
 
     }
 
-            });
+    });    
+     
 
         });//end of btnAddDetailsBill click
 
