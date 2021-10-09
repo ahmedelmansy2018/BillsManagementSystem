@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<XtraReportsLayoutSerializer SerializerVersion="21.1.6.0" Ref="1" ControlType="DevExpress.XtraReports.UI.XtraReport, DevExpress.XtraReports.v21.1, Version=21.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Name="BillingPrint" PageWidth="850" PageHeight="1100" Version="21.1" DataMember="ITMDTLs" DataSource="#Ref-0" Font="Arial, 9.75pt">
+  <Extensions>
+    <Item1 Ref="2" Key="VSReportExtInfo" Value=".vsrepx" />
+  </Extensions>
+  <Bands>
+    <Item1 Ref="3" ControlType="TopMarginBand" Name="TopMargin" />
+    <Item2 Ref="4" ControlType="BottomMarginBand" Name="BottomMargin" />
+    <Item3 Ref="5" ControlType="DetailBand" Name="Detail">
+      <Controls>
+        <Item1 Ref="6" ControlType="XRTable" Name="table1" SizeF="300,25" LocationFloat="148.958328,10.0000067" Padding="2,2,0,0,96">
+          <Rows>
+            <Item1 Ref="7" ControlType="XRTableRow" Name="tableRow1" Weight="1">
+              <Cells>
+                <Item1 Ref="8" ControlType="XRTableCell" Name="tableCell1" Weight="1" Multiline="true" Text="tableCell1">
+                  <ExpressionBindings>
+                    <Item1 Ref="9" EventName="BeforePrint" PropertyName="Text" Expression="[ITMNAM]" />
+                  </ExpressionBindings>
+                </Item1>
+                <Item2 Ref="10" ControlType="XRTableCell" Name="tableCell2" Weight="1" Multiline="true" Text="tableCell2">
+                  <ExpressionBindings>
+                    <Item1 Ref="11" EventName="BeforePrint" PropertyName="Text" Expression="[DTLCOD]" />
+                  </ExpressionBindings>
+                </Item2>
+                <Item3 Ref="12" ControlType="XRTableCell" Name="tableCell3" Weight="1" Multiline="true" Text="tableCell3">
+                  <ExpressionBindings>
+                    <Item1 Ref="13" EventName="BeforePrint" PropertyName="Text" Expression="[ITMQTY]" />
+                  </ExpressionBindings>
+                </Item3>
+              </Cells>
+            </Item1>
+          </Rows>
+        </Item1>
+      </Controls>
+    </Item3>
+  </Bands>
+  <ComponentStorage>
+    <Item1 Ref="14" ObjectType="DevExpress.DataAccess.Sql.SqlDataSource,DevExpress.DataAccess.v21.1" Name="sqlDataSource1" Base64="PFNxbERhdGFTb3VyY2UgTmFtZT0ic3FsRGF0YVNvdXJjZTEiPjxDb25uZWN0aW9uIE5hbWU9IkJpbGxzTWFuYWdlbWVudERCIiBGcm9tQXBwQ29uZmlnPSJ0cnVlIiAvPjxRdWVyeSBUeXBlPSJTZWxlY3RRdWVyeSIgTmFtZT0iQklMRFRMcyI+PFRhYmxlcz48VGFibGUgTmFtZT0iQklMRFRMcyIgLz48L1RhYmxlcz48Q29sdW1ucz48Q29sdW1uIFRhYmxlPSJCSUxEVExzIiBOYW1lPSJEVExDT0QiIC8+PENvbHVtbiBUYWJsZT0iQklMRFRMcyIgTmFtZT0iSVRNUFJDIiAvPjxDb2x1bW4gVGFibGU9IkJJTERUTHMiIE5hbWU9IklUTVFUWSIgLz48Q29sdW1uIFRhYmxlPSJCSUxEVExzIiBOYW1lPSJCSUxDT0QiIC8+PENvbHVtbiBUYWJsZT0iQklMRFRMcyIgTmFtZT0iSVRNQ09EIiAvPjwvQ29sdW1ucz48L1F1ZXJ5PjxRdWVyeSBUeXBlPSJTZWxlY3RRdWVyeSIgTmFtZT0iQklMSERScyI+PFRhYmxlcz48VGFibGUgTmFtZT0iQklMSERScyIgLz48L1RhYmxlcz48Q29sdW1ucz48Q29sdW1uIFRhYmxlPSJCSUxIRFJzIiBOYW1lPSJCSUxDT0QiIC8+PENvbHVtbiBUYWJsZT0iQklMSERScyIgTmFtZT0iQklMREFUIiAvPjxDb2x1bW4gVGFibGU9IkJJTEhEUnMiIE5hbWU9IkJJTFBSQyIgLz48Q29sdW1uIFRhYmxlPSJCSUxIRFJzIiBOYW1lPSJCSUxJTUciIC8+PENvbHVtbiBUYWJsZT0iQklMSERScyIgTmFtZT0iVk5EQ09EIiAvPjwvQ29sdW1ucz48L1F1ZXJ5PjxRdWVyeSBUeXBlPSJTZWxlY3RRdWVyeSIgTmFtZT0iSVRNRFRMcyI+PFRhYmxlcz48VGFibGUgTmFtZT0iSVRNRFRMcyIgLz48L1RhYmxlcz48Q29sdW1ucz48Q29sdW1uIFRhYmxlPSJJVE1EVExzIiBOYW1lPSJJVE1DT0QiIC8+PENvbHVtbiBUYWJsZT0iSVRNRFRMcyIgTmFtZT0iSVRNTkFNIiAvPjxDb2x1bW4gVGFibGU9IklUTURUTHMiIE5hbWU9IklUTVBSQyIgLz48L0NvbHVtbnM+PC9RdWVyeT48UXVlcnkgVHlwZT0iU2VsZWN0UXVlcnkiIE5hbWU9IlZORERUTHMiPjxUYWJsZXM+PFRhYmxlIE5hbWU9IlZORERUTHMiIC8+PC9UYWJsZXM+PENvbHVtbnM+PENvbHVtbiBUYWJsZT0iVk5ERFRMcyIgTmFtZT0iVk5EQ09EIiAvPjxDb2x1bW4gVGFibGU9IlZORERUTHMiIE5hbWU9IlZORE5BTSIgLz48L0NvbHVtbnM+PC9RdWVyeT48UmVzdWx0U2NoZW1hPjxEYXRhU2V0IE5hbWU9InNxbERhdGFTb3VyY2UxIj48VmlldyBOYW1lPSJCSUxEVExzIj48RmllbGQgTmFtZT0iRFRMQ09EIiBUeXBlPSJJbnQzMiIgLz48RmllbGQgTmFtZT0iSVRNUFJDIiBUeXBlPSJEZWNpbWFsIiAvPjxGaWVsZCBOYW1lPSJJVE1RVFkiIFR5cGU9IkludDMyIiAvPjxGaWVsZCBOYW1lPSJCSUxDT0QiIFR5cGU9IkludDMyIiAvPjxGaWVsZCBOYW1lPSJJVE1DT0QiIFR5cGU9IkludDMyIiAvPjwvVmlldz48VmlldyBOYW1lPSJCSUxIRFJzIj48RmllbGQgTmFtZT0iQklMQ09EIiBUeXBlPSJJbnQzMiIgLz48RmllbGQgTmFtZT0iQklMREFUIiBUeXBlPSJEYXRlVGltZSIgLz48RmllbGQgTmFtZT0iQklMUFJDIiBUeXBlPSJEZWNpbWFsIiAvPjxGaWVsZCBOYW1lPSJCSUxJTUciIFR5cGU9IlN0cmluZyIgLz48RmllbGQgTmFtZT0iVk5EQ09EIiBUeXBlPSJJbnQzMiIgLz48L1ZpZXc+PFZpZXcgTmFtZT0iSVRNRFRMcyI+PEZpZWxkIE5hbWU9IklUTUNPRCIgVHlwZT0iSW50MzIiIC8+PEZpZWxkIE5hbWU9IklUTU5BTSIgVHlwZT0iU3RyaW5nIiAvPjxGaWVsZCBOYW1lPSJJVE1QUkMiIFR5cGU9IkRlY2ltYWwiIC8+PC9WaWV3PjxWaWV3IE5hbWU9IlZORERUTHMiPjxGaWVsZCBOYW1lPSJWTkRDT0QiIFR5cGU9IkludDMyIiAvPjxGaWVsZCBOYW1lPSJWTkROQU0iIFR5cGU9IlN0cmluZyIgLz48L1ZpZXc+PC9EYXRhU2V0PjwvUmVzdWx0U2NoZW1hPjxDb25uZWN0aW9uT3B0aW9ucyBDbG9zZUNvbm5lY3Rpb249InRydWUiIC8+PC9TcWxEYXRhU291cmNlPg==" />
+    <Item2 Ref="0" ObjectType="DevExpress.DataAccess.Sql.SqlDataSource,DevExpress.DataAccess.v21.1" Name="sqlDataSource2" Base64="PFNxbERhdGFTb3VyY2UgTmFtZT0ic3FsRGF0YVNvdXJjZTIiPjxDb25uZWN0aW9uIE5hbWU9IkJpbGxzTWFuYWdlbWVudERCIiBGcm9tQXBwQ29uZmlnPSJ0cnVlIiAvPjxRdWVyeSBUeXBlPSJTZWxlY3RRdWVyeSIgTmFtZT0iSVRNRFRMcyI+PFRhYmxlcz48VGFibGUgTmFtZT0iSVRNRFRMcyIgLz48L1RhYmxlcz48Q29sdW1ucz48Q29sdW1uIFRhYmxlPSJJVE1EVExzIiBOYW1lPSJJVE1OQU0iIC8+PENvbHVtbiBUYWJsZT0iSVRNRFRMcyIgTmFtZT0iSVRNUFJDIiAvPjxDb2x1bW4gVGFibGU9IklUTURUTHMiIE5hbWU9IklUTUNPRCIgLz48L0NvbHVtbnM+PC9RdWVyeT48UmVzdWx0U2NoZW1hPjxEYXRhU2V0IE5hbWU9InNxbERhdGFTb3VyY2UyIj48VmlldyBOYW1lPSJJVE1EVExzIj48RmllbGQgTmFtZT0iSVRNTkFNIiBUeXBlPSJTdHJpbmciIC8+PEZpZWxkIE5hbWU9IklUTVBSQyIgVHlwZT0iRGVjaW1hbCIgLz48RmllbGQgTmFtZT0iSVRNQ09EIiBUeXBlPSJJbnQzMiIgLz48L1ZpZXc+PC9EYXRhU2V0PjwvUmVzdWx0U2NoZW1hPjxDb25uZWN0aW9uT3B0aW9ucyBDbG9zZUNvbm5lY3Rpb249InRydWUiIC8+PC9TcWxEYXRhU291cmNlPg==" />
+  </ComponentStorage>
+</XtraReportsLayoutSerializer>

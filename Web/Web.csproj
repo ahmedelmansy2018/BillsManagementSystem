@@ -4,4 +4,40 @@
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="Reporting\BillingPrint.vsrepx" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Reporting\BillingPrint.vsrepx" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="DevExpress.Reporting.Core" Version="21.1.6" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.0.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.0.0" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="5.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Business Logic layer\Business Logic layer.csproj" />
+    <ProjectReference Include="..\Data Access layer\Data Access Layer.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\Img\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Reporting\BillingPrint.cs">
+      <DependentUpon>BillingPrint.vsrepx</DependentUpon>
+    </Compile>
+    <Compile Update="Reporting\BillingPrint.Designer.cs">
+      <DependentUpon>BillingPrint.vsrepx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
 </Project>

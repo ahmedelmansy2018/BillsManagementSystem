@@ -1,0 +1,249 @@
+﻿@model IList<Web.ViewModels.BILHDR_VM>
+@{
+    ViewData["Title"] = "index";
+}
+<h1>BILL Mangment</h1>
+
+
+
+<div id="Div1">
+
+    <button id="btnCreate" class="btn btn-primary">Create New</button>
+<br />
+    <table id="tbone" class="table table-bordered">
+        <thead>
+            <tr>
+                <th>
+                    ID
+                </th>
+                <th>
+                    Data
+                </th>
+                <th>
+                    Image
+                </th>
+                <th>
+                    Price
+                </th>
+                <th>
+                    Vendoerss
+                </th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BILCOD)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BILDAT)
+                </td>
+                <td>
+                    <div class="img-responsive" style="margin-bottom:20px">
+                        <img src="~/Img/@item.BILIMG" height="70" width="70" />
+                    </div>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BILPRC)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.VNDNAM)
+                </td>
+                <td>
+
+                    <a id="@item.BILCOD" onClick="GetBilHeaderById(@item.BILCOD)" class="btn btn-outline-dark" data-toggle="modal" data-target="#Modal">edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.BILCOD" class="btn btn-outline-info">Details</a> |
+                    <a id="button" class="btn btn-danger"  data-model-id="@item.BILCOD" onclick="Delete(this)">Delete</a>
+                    <a id="button" class="btn btn-default"  data-model-id="@item.BILCOD" onclick="Delete(this)">Delete</a>
+                </td>
+            </tr>
+            } 
+        </tbody>
+    </table>
+
+</div>
+<div class="container" id="Div2">
+    <div class="container">
+        <h2 class="text-center">Add New Bill</h2>
+        <div class="row">
+            <div class="col-md-6">
+                <form id="AddBill" method="post" enctype="multipart/form-data" onsubmit="return AjaxPost(this)">
+                    <label>Data</label><br />
+                    <input type="text" id="BILDAT" name="BILDAT" class="form-control" /><br />
+
+                    <span id="Dataerror">Data Require</span><br />
+
+
+                    <label>vendor</label><br />
+                    <select id="VNDCOD" name="VNDCOD">
+                    </select><br />
+                    <span id="vendererror">Vendor Require</span><br />
+                    <label>Image</label><br />
+                    <input type="file" id="File" name="File" class="form-control" /><br />
+                    <button class="btn btn-danger">Add</button>
+                </form>
+            </div>
+        </div>
+    </div><br /><br /><br /><br />
+
+
+
+</div>
+<div id="Div3">
+ 
+    <table id="tbshow" class="table table-bordered" style="margin-top:10px;">
+        <thead class="bg-danger text-center text-white">
+            <tr>
+                <th>ID Bill</th>
+                <th>Data Bill </th>
+               <th>Iamge Bill </th>
+                <th>Price Bill</th>
+                <th>Vendor Name</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+    
+</div>
+<div id="Div4">
+    <table class="table">
+        <tr>
+            <td><label>Item Name</label></td>
+            <td>
+                <select id="ITMCOD">
+                </select>
+            </td>
+        </tr>
+        <tr>
+
+       
+        <td>
+            <label> ITem Price </label>
+        </td>
+        <td> <input type="text" id="ITMPRC"></td>
+        </tr>
+        <tr>
+            <td><span id="ITMPRCerror">ITMPRC Is Invalid</span></td>
+        </tr>
+
+        <tr>
+            <td>
+                <label> ITem QTY </label>
+            </td>
+            <td> <input type="text" id="ITMQTY"></td>
+
+        </tr>
+        <tr>
+            <td><span id="ITMQTYerror">ITMQTY Is Invalid</span></td>
+
+        </tr>
+        <tr>
+            <td>
+                <button id="btnAddDetailsBill" class="btn btn-primary">ADD</button>
+            </td>
+            <td id="notify">
+            </td>
+
+        </tr>
+    </table>
+
+    <table id="tbDetails" class="table table-bordered" style="margin-top:10px;">
+        <thead class="bg-danger text-center text-white">
+            <tr>
+                <th>Item Name</th>
+                <th>Item Price </th>
+                <th>Item QTY</th>
+                <th>total Price </th>
+                
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+
+</div>
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Edit Bill Details</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <table class="etable">
+                    <tr>
+                        <td><label>Item Name</label></td>
+                        <td>
+                            <select id="ITMeCOD">
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label> ITem Price </label>
+                        </td>
+                        <td> <input type="text" id="ITMePRC"></td>
+                    </tr>
+                   
+                    <tr>
+                        <td>
+                            <label> ITem QTY </label>
+                        </td>
+                        <td> <input type="text" id="ITMeQTY"></td>
+                    </tr>
+
+
+                </table>
+                <span id="notify"></></span>
+            </div>
+            <div class="modal-footer">
+                <button  type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button id="BtnEdit"type="button" class="btn btn-primary">Edit</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Edit Bill Details</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="col-md-6">
+                    <form id="EdithederBill" method="post" enctype="multipart/form-data" onsubmit="return AjaxPostedit(this)">
+                        
+                        <input  type="hidden"  id="BILCOD" name="BILCOD" class="form-control" /><br />
+                        <label>Data</label><br />
+                        <input type="text" id="BILeDAT" name="BILDAT" class="form-control" /><br />
+
+                        <label>vendor</label><br />
+                        <select id="VNDeCOD" name="VNDCOD">
+                        </select><br />
+                        <label>Image</label><br />
+                        <input type="file" id="File" name="File" class="form-control" /><br />
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Edit</button>
+                        </div>
+
+                    </form>
+                </div>
+                <span id="notify"></></span>
+            </div>
+           
+        </div>
+    </div>
+</div>
+
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="~/js/JavaScript.js"></script>

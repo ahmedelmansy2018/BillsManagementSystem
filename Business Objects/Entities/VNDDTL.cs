@@ -4,14 +4,15 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 
-namespace DBModel.Entities
+namespace Business_Objects
 {
-    class VNDDTL
+   public class VNDDTL
     {
         //   Vendors Table
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int VNDCOD { get; set; }
+        [Column(TypeName = "nvarchar(100)")]
         [Required(ErrorMessage = "Please add Vendor Name.")]
         public string VNDNAM { get; set; }
 
