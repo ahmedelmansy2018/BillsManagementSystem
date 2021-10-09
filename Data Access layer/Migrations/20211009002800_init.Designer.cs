@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Data_Access_layer.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20211001203337_init")]
+    [Migration("20211009002800_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -31,13 +31,7 @@ namespace Data_Access_layer.Migrations
                     b.Property<int>("BILCOD")
                         .HasColumnType("int");
 
-                    b.Property<int?>("BILHDRBILCOD")
-                        .HasColumnType("int");
-
                     b.Property<int>("ITMCOD")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("ITMDTLITMCOD")
                         .HasColumnType("int");
 
                     b.Property<decimal>("ITMPRC")
@@ -48,9 +42,9 @@ namespace Data_Access_layer.Migrations
 
                     b.HasKey("DTLCOD");
 
-                    b.HasIndex("BILHDRBILCOD");
+                    b.HasIndex("BILCOD");
 
-                    b.HasIndex("ITMDTLITMCOD");
+                    b.HasIndex("ITMCOD");
 
                     b.ToTable("BILDTLs");
                 });
@@ -66,20 +60,17 @@ namespace Data_Access_layer.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("BILIMG")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(250)");
 
-                    b.Property<decimal>("ITMPRC")
+                    b.Property<decimal>("BILPRC")
                         .HasColumnType("decimal(10, 2)");
 
                     b.Property<int>("VNDCOD")
                         .HasColumnType("int");
 
-                    b.Property<int?>("VNDDTLVNDCOD")
-                        .HasColumnType("int");
-
                     b.HasKey("BILCOD");
 
-                    b.HasIndex("VNDDTLVNDCOD");
+                    b.HasIndex("VNDCOD");
 
                     b.ToTable("BILHDRs");
                 });
@@ -93,7 +84,7 @@ namespace Data_Access_layer.Migrations
 
                     b.Property<string>("ITMNAM")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(100)");
 
                     b.Property<decimal>("ITMPRC")
                         .HasColumnType("decimal(10, 2)");
@@ -132,7 +123,7 @@ namespace Data_Access_layer.Migrations
 
                     b.Property<string>("VNDNAM")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(100)");
 
                     b.HasKey("VNDCOD");
 
@@ -160,18 +151,24 @@ namespace Data_Access_layer.Migrations
                 {
                     b.HasOne("Business_Objects.BILHDR", "BILHDR")
                         .WithMany("BILDTL")
-                        .HasForeignKey("BILHDRBILCOD");
+                        .HasForeignKey("BILCOD")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("Business_Objects.ITMDTL", "ITMDTL")
                         .WithMany("BILDTL")
-                        .HasForeignKey("ITMDTLITMCOD");
+                        .HasForeignKey("ITMCOD")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Business_Objects.BILHDR", b =>
                 {
                     b.HasOne("Business_Objects.VNDDTL", "VNDDTL")
                         .WithMany("BILHDRs")
-                        .HasForeignKey("VNDDTLVNDCOD");
+                        .HasForeignKey("VNDCOD")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

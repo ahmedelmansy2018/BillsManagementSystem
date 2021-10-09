@@ -1,4 +1,5 @@
-﻿using Business_Objects.Interfaces;
+﻿using Business_Objects;
+using Business_Objects.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 using System.Collections.Generic;
@@ -45,5 +46,7 @@ namespace Data_Access_layer.Repository
             Table.Attach(entity);
             _context.Entry(entity).State = EntityState.Modified;
         }
+
+        
     }
 }

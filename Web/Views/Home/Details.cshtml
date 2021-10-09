@@ -12,59 +12,69 @@
     
     <table class="table">
         <thead>
-            <tr>
-                <th>
-                    ID
-                </th>
-                <th>
-                    Data
-                </th>
-                <th>
-                    IDDetials
-                </th>
-                <th>
-                   Price
-                </th>
-                <th>
-                   QTY
-                </th>
-                <th>
-                    NAme
-                </th>
-                <th></th>
-            </tr>
+            @*<tr>
+            <th>
+                ID
+            </th>
+            <th>
+                Data
+            </th>
+            <th>
+                IDDetials
+            </th>
+            <th>
+               Price
+            </th>
+            <th>
+               QTY
+            </th>
+            <th>
+                NAme
+            </th>
+            <th></th>
+        </tr>*@
         </thead>
         <tbody>
             <tr>
-                <td>@Model.BIL_HDR.BILCOD</td>
+                <td>@Model.BIL_HDR.BILCOD</td> <td colspan="4"></td>
+                <td rowspan="3">
+                    <div class="img-responsive" style="margin-bottom:20px">
+                        <img src="~/Img/@Model.BIL_HDR.BILIMG" height="220" width="240" />
+                    </div>
+                </td>
             </tr>
             <tr>
-                <td>@Model.BIL_HDR.BILDAT</td>
+                <td colspan="2">@Model.BIL_HDR.BILDAT</td>
             </tr>
-
+            <tr>
+                <td>@Model.BIL_HDR.BILPRC</td>
+            </tr>
+            <tr>
+                <td>@Model.VNDNAM</td>
+            </tr>
             @foreach (var item in Model.BILDTI_VM)
             {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.DTLCOD)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ITMPRC)
-            </td>
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DTLCOD)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ITMPRC)
+                    </td>
 
-            <td>
-                @Html.DisplayFor(modelItem => item.ITMQTY)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ITMNAM)
-            </td>
-            <td>
-                @*<i class="fas fa-edit"></i>*@
-                <a asp-action="Edit" class="btn btn-outline-dark"asp-route-id="@item.DTLCOD">Edit</a> |
-                <a asp-action="Details" class="btn btn-outline-info"asp-route-id="@item.DTLCOD">Details</a> |
-                <a asp-action="Delete" class="btn btn-outline-danger"asp-route-id="@item.DTLCOD">Delete</a>
-            </td>
-        </tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ITMQTY)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ITMNAM)
+                    </td>
+                    <td>
+                        @*<i class="fas fa-edit"></i>*@
+                        <a asp-action="Edit" class="btn btn-outline-dark" asp-route-id="@item.DTLCOD">Edit</a> |
+                        <a asp-action="Details" class="btn btn-outline-info" asp-route-id="@item.DTLCOD">Details</a> |
+                        <a asp-action="Delete" class="btn btn-outline-danger" asp-route-id="@item.DTLCOD">Delete</a>
+                    </td>
+                </tr>
             }
         </tbody>
     </table>

@@ -13,7 +13,7 @@ namespace Data_Access_layer.Migrations
                 {
                     ITMCOD = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    ITMNAM = table.Column<string>(nullable: false),
+                    ITMNAM = table.Column<string>(type: "nvarchar(100)", nullable: false),
                     ITMPRC = table.Column<decimal>(type: "decimal(10, 2)", nullable: false)
                 },
                 constraints: table =>
@@ -27,7 +27,7 @@ namespace Data_Access_layer.Migrations
                 {
                     VNDCOD = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    VNDNAM = table.Column<string>(nullable: false)
+                    VNDNAM = table.Column<string>(type: "nvarchar(100)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -41,20 +41,19 @@ namespace Data_Access_layer.Migrations
                     BILCOD = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     BILDAT = table.Column<DateTime>(nullable: false),
-                    ITMPRC = table.Column<decimal>(type: "decimal(10, 2)", nullable: false),
-                    BILIMG = table.Column<string>(nullable: true),
-                    VNDCOD = table.Column<int>(nullable: false),
-                    VNDDTLVNDCOD = table.Column<int>(nullable: true)
+                    BILPRC = table.Column<decimal>(type: "decimal(10, 2)", nullable: false),
+                    BILIMG = table.Column<string>(type: "nvarchar(250)", nullable: true),
+                    VNDCOD = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_BILHDRs", x => x.BILCOD);
                     table.ForeignKey(
-                        name: "FK_BILHDRs_VNDDTLs_VNDDTLVNDCOD",
-                        column: x => x.VNDDTLVNDCOD,
+                        name: "FK_BILHDRs_VNDDTLs_VNDCOD",
+                        column: x => x.VNDCOD,
                         principalTable: "VNDDTLs",
                         principalColumn: "VNDCOD",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -66,25 +65,23 @@ namespace Data_Access_layer.Migrations
                     ITMPRC = table.Column<decimal>(type: "decimal(10, 2)", nullable: false),
                     ITMQTY = table.Column<int>(nullable: false),
                     BILCOD = table.Column<int>(nullable: false),
-                    BILHDRBILCOD = table.Column<int>(nullable: true),
-                    ITMCOD = table.Column<int>(nullable: false),
-                    ITMDTLITMCOD = table.Column<int>(nullable: true)
+                    ITMCOD = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_BILDTLs", x => x.DTLCOD);
                     table.ForeignKey(
-                        name: "FK_BILDTLs_BILHDRs_BILHDRBILCOD",
-                        column: x => x.BILHDRBILCOD,
+                        name: "FK_BILDTLs_BILHDRs_BILCOD",
+                        column: x => x.BILCOD,
                         principalTable: "BILHDRs",
                         principalColumn: "BILCOD",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.SetNull);
                     table.ForeignKey(
-                        name: "FK_BILDTLs_ITMDTLs_ITMDTLITMCOD",
-                        column: x => x.ITMDTLITMCOD,
+                        name: "FK_BILDTLs_ITMDTLs_ITMCOD",
+                        column: x => x.ITMCOD,
                         principalTable: "ITMDTLs",
                         principalColumn: "ITMCOD",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.SetNull);
                 });
 
             migrationBuilder.InsertData(
@@ -108,19 +105,19 @@ namespace Data_Access_layer.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_BILDTLs_BILHDRBILCOD",
+                name: "IX_BILDTLs_BILCOD",
                 table: "BILDTLs",
-                column: "BILHDRBILCOD");
+                column: "BILCOD");
 
             migrationBuilder.CreateIndex(
-                name: "IX_BILDTLs_ITMDTLITMCOD",
+                name: "IX_BILDTLs_ITMCOD",
                 table: "BILDTLs",
-                column: "ITMDTLITMCOD");
+                column: "ITMCOD");
 
             migrationBuilder.CreateIndex(
-                name: "IX_BILHDRs_VNDDTLVNDCOD",
+                name: "IX_BILHDRs_VNDCOD",
                 table: "BILHDRs",
-                column: "VNDDTLVNDCOD");
+                column: "VNDCOD");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

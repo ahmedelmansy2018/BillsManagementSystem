@@ -9,6 +9,7 @@ namespace Web.ViewModels
     public class BILFULL_VM
     {
         public BILHDR BIL_HDR { get; set; }
+        public string VNDNAM { get; set; }
         public List<BILDTI_VM> BILDTI_VM { get; set; }
     }
 }

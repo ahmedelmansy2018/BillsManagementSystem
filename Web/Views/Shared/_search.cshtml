@@ -1,0 +1,52 @@
+﻿
+@using (Html.BeginForm("index", "Home"))
+{
+
+    <input id="Searchinput" class="form-inline " name="Search" type="search" placeholder="Search BY ID" aria-label="Search">
+}
+
+<style>
+    #Searchinput {
+        position: relative;
+        z-index: 10000;
+    }
+
+    .ui-autocomplete {
+        z-index: 9999 !important;
+    }
+</style>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script type="text/javascript">
+    $(function () {
+
+        $("#Searchinput").autocomplete({
+            minLength: 1,
+            source: function (request, response) {
+
+                $.ajax({
+                    url: "https://localhost:44317/Home/GetValSearch",
+                    type: "POST",
+                    dataType: "json",
+                    data: { search: $("#Searchinput").val() },
+                    success: function (data) {
+                        response($.map(data, function (item) {
+                            return { label: item.BILDAT, value: item.BILDAT };
+                        }))
+                    }
+
+
+                })
+
+
+            },
+            messages: {
+                noResults: "", results: ""
+            }
+
+        });
+
+    });
+</script>
+

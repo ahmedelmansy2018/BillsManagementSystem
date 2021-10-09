@@ -11,5 +11,7 @@ namespace Web.ViewModels
         public Decimal ITMPRC { get; set; }
         public int ITMQTY { get; set; }
         public string ITMNAM { get; set; }
+        public int BILCOD { get; set; }
+        public int ITMCOD { get; set; }
     }
 }

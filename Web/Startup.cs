@@ -3,6 +3,7 @@ using Business_Objects;
 using Business_Objects.Interfaces;
 using Business_Objects.Interfaces.Services;
 using Data_Access_layer;
+using Data_Access_layer.Repository;
 using Data_Access_layer.UnitOfWork;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -37,7 +38,11 @@ namespace Web
 
             services.AddScoped(typeof(IUnitOfWork<>), typeof(UnitOfWork<>));
             services.AddScoped(typeof(IWorkService<>), typeof(WorkService<>));
-          
+            services.AddScoped<IReposCaseHeader, ReposCaseHeader>();
+
+
+
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
