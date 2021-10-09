@@ -17,12 +17,11 @@ var x;
                     x = data.bilcod;
 
                     console.log("OK");
-                    $("#Div3").show();
+                    $("#Div3").show();+ data.bilimg +
                     $("#Div2").hide();
                     GetvendoerById(data.vndcod);
                     Table.append('<tr><td>' + data.bilcod + '</td><td>'
-                        + data.bildat + '</td><td> ' + data.bilimg + '</td ><td>'
-                        + data.bilprc + '</td><td id="vndcod">' + vndname + '</td></tr>');
+                        + data.bildat + '</td><td> <img src="/Img/' + data.bilimg +'" height="70" width="70" /></td></tr>');
 
                     $("#Div4").show();
                     GetAllItems();
@@ -127,17 +126,20 @@ var x;
 
         });
         BillHeaderCod = id
+        
         $.ajax({
             url: "https://localhost:44317/Home/GetHeaderBillByid/" + id,
             type: "GET",
             dataType: "json",
             success: function (data) {
+               
                 console.log("000000");
                 console.log(data);
                 
                 $("#BILCOD").val(data.bilcod);
                 $("#BILeDAT").val(data.bildat);
                 $("#VNDeCOD").val(data.vndcod);
+                $("#BILPRC").val(data.bilprc);
                 
                 
 
@@ -334,6 +336,8 @@ function DeleteBilDeltials(obj) {
 }
 
 
+var ItemPrice = document.getElementById('ITMPRC');
+var itemQty = document.getElementById('ITMQTY');
 
 
 function isPricevalide() {
@@ -341,7 +345,7 @@ function isPricevalide() {
     return ItemPrice.value.match(/^[0-9]{1,9}$/);
 }
 function isQTYvalide() {
-    return itenQty.value.match(/^[0-9]{1,9}$/);
+    return itemQty.value.match(/^[0-9]{1,9}$/);
 }
 
 
@@ -365,7 +369,7 @@ function isvendorvalide() {
         var BILDAT = document.getElementById('BILDAT');
         var VNDCOD = document.getElementById('VNDCOD');
 
-        BILDAT.focus();
+      //  BILDAT.focus();
 
         // all spans
         var Dataerror = document.getElementById('Dataerror');
@@ -422,7 +426,7 @@ function isvendorvalide() {
         });
 
         $("#ITMPRC").blur(function () {
-            if (!isDatavalide()) {
+            if (!isPricevalide()) {
 
                 ItemPrice.focus();
                 ItemPrice.select();
@@ -454,9 +458,9 @@ function isvendorvalide() {
     $("#Div3").hide();
     $("#Div4").hide();
 
-
-    $("#btnCreate").click(function () {
         
+        $("#Back").click(function () { window.location.href = "https://localhost:44317/Home"; }); //end of Back click
+        $("#btnCreate").click(function () {
     $("#Div1").hide();
     $("#Div2").show();
     $("#Div4").hide();
@@ -529,7 +533,7 @@ function isvendorvalide() {
 
         });
                     }
-    else {toastr.error('ITems is already exists!'); }
+    else {toastr.error('ITem Name is already exists!'); }
     console.log(data);
                 },
     error: function (err) {
