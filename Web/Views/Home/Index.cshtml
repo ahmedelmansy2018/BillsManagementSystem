@@ -57,7 +57,7 @@
                     <a id="@item.BILCOD" onClick="GetBilHeaderById(@item.BILCOD)" class="btn btn-outline-dark" data-toggle="modal" data-target="#Modal">edit</a> |
                     <a asp-action="Details" asp-route-id="@item.BILCOD" class="btn btn-outline-info">Details</a> |
                     <a id="button" class="btn btn-danger"  data-model-id="@item.BILCOD" onclick="Delete(this)">Delete</a>
-                    <a id="button" class="btn btn-default"  data-model-id="@item.BILCOD" >Print</a>
+                    <a id="button" href="/Home/BillingPrint?Id=@item.BILCOD" target="_blank" class="btn btn-default"  data-model-id="@item.BILCOD" >Print</a>
                 </td>
             </tr>
             } 

@@ -1,6 +1,7 @@
 ﻿using Business_Objects;
 using Business_Objects.Interfaces;
 using Business_Objects.Interfaces.Services;
+using DevExpress.XtraReports.UI;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -8,6 +9,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Web.Reporting;
 using Web.ViewModels;
 
 namespace Web.Controllers
@@ -357,5 +359,25 @@ namespace Web.Controllers
 
             return View(Bill_Full);
         }
+
+        public ActionResult BillingPrint(int Id)
+        {
+
+            XtraReport rep = new XtraReport();
+            rep = BillingPrintReport(Id);
+
+           // ReportViewerExtension.ExportTo(rep, Request);
+            return View(rep);
+        }
+
+
+        protected XtraReport BillingPrintReport(int  Id)
+        {
+            BillingPrint rep = new BillingPrint();
+            return rep;
+
+        }
+
+
     }
 }
