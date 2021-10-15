@@ -198,7 +198,7 @@ var x;
                     data: {
                        
                         BILCOD: x,
-                        BILPRC: TotalPriceBill,
+                        BILPRC: TotalPriceBill
                     },
                     dataType: "json",
                     success: function (data) {
@@ -554,14 +554,13 @@ function isvendorvalide() {
     $.ajax({
         url: "https://localhost:44317/Home/IsNameItemsAvailable",
     type: "POST",
-
     data: {
         HIDCODe: x,
     ITMe: ITMCOD
                 },
     dataType: "json",
     success: function (data) {
-                    if (!data) {
+                   if (!data) {
         $.ajax({
             url: "https://localhost:44317/Home/EditBillDetials",
             type: "POST",

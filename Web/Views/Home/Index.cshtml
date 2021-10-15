@@ -9,7 +9,9 @@
 <div id="Div1">
 
     <button id="btnCreate" class="btn btn-primary">Create New</button>
-<br />
+    <br />
+    <br />
+
     <table id="tbone" class="table table-bordered">
         <thead>
             <tr>
@@ -34,33 +36,33 @@
         <tbody>
             @foreach (var item in Model)
             {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.BILCOD)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.BILDAT)
-                </td>
-                <td>
-                    <div class="img-responsive" style="margin-bottom:20px">
-                        <img src="~/Img/@item.BILIMG" height="70" width="70" />
-                    </div>
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.BILPRC)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.VNDNAM)
-                </td>
-                <td>
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.BILCOD)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.BILDAT)
+                    </td>
+                    <td>
+                        <div class="img-responsive" style="margin-bottom:20px">
+                            <img src="~/Img/@item.BILIMG" height="70" width="70" />
+                        </div>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.BILPRC)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.VNDNAM)
+                    </td>
+                    <td>
 
-                    <a id="@item.BILCOD" onClick="GetBilHeaderById(@item.BILCOD)" class="btn btn-outline-dark" data-toggle="modal" data-target="#Modal">edit</a> |
-                    <a asp-action="Details" asp-route-id="@item.BILCOD" class="btn btn-outline-info">Details</a> |
-                    <a id="button" class="btn btn-danger"  data-model-id="@item.BILCOD" onclick="Delete(this)">Delete</a>
-                    <a id="button" class="btn btn-default"  data-model-id="@item.BILCOD" >Print</a>
-                </td>
-            </tr>
-            } 
+                        <a id="@item.BILCOD" onClick="GetBilHeaderById(@item.BILCOD)" class="btn btn-outline-dark" data-toggle="modal" data-target="#Modal">edit</a> |
+                        <a asp-action="Details" asp-route-id="@item.BILCOD" class="btn btn-outline-info">Details</a> |
+                        <a id="button" class="btn btn-danger" data-model-id="@item.BILCOD" onclick="Delete(this)">Delete</a>
+                        <a id="button" href="/Home/Viewer?id=@item.BILCOD" target="_blank" class="btn btn-outline-secondary">Print</a>
+                    </td>
+                </tr>
+            }
         </tbody>
     </table>
 
@@ -177,7 +179,7 @@
                     <tr>
                         <td><label>Item Name</label></td>
                         <td>
-                            <select id="ITMeCOD">
+                            <select id="ITMeCOD" disabled>
                             </select>
                         </td>
                     </tr>
