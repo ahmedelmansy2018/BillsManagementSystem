@@ -1,13 +1,6 @@
-﻿
-
-@model DevExpress.XtraReports.UI.XtraReport
+﻿@model PrintBills
 @using DevExpress.AspNetCore
-
-@{
-    ViewBag.Title = "BillingPrint";
-    //Layout = "~/Views/Shared/_LayoutDevExpress.cshtml";
-}
-
+@using Web.Reporting
 
 <link href="~/node_modules/jquery-ui-dist/jquery-ui.min.css" rel="stylesheet" />
 
@@ -33,10 +26,9 @@
 
 <link href="~/node_modules/@@devexpress/analytics-core/dist/css/dx-analytics.light.css" rel="stylesheet" />
 
-<link href="~/node_modules/devexpress-reporting/dist/css/dx-webdocumentviewer.css" rel="stylesheet" /> 
+<link href="~/node_modules/devexpress-reporting/dist/css/dx-webdocumentviewer.css" rel="stylesheet" />
+
 
 @(Html.DevExpress().WebDocumentViewer("WebDocumentViewer")
     .Height("1000px")
-    .Bind((DevExpress.XtraReports.UI.XtraReport)Model))
-
-@*@Html.DevExpress().WebDocumentViewer( "WebDocumentViewer").Bind((DevExpress.XtraReports.UI.XtraReport)Model)*@
+    .Bind(Model))

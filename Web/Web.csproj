@@ -3,12 +3,10 @@
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
-    <None Remove="Reporting\BillingPrint.vsrepx" />
-    <None Remove="Reporting\sample.vsrepx" />
+    <None Remove="Reporting\PrintBills.vsrepx" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Reporting\BillingPrint.vsrepx" />
-    <EmbeddedResource Include="Reporting\sample.vsrepx" />
+    <EmbeddedResource Include="Reporting\PrintBills.vsrepx" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="DevExpress.AspNetCore.Reporting" Version="21.1.6" />
@@ -28,19 +26,15 @@
     <Folder Include="wwwroot\Img\" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Update="Reporting\BillingPrint.cs">
-      <DependentUpon>BillingPrint.vsrepx</DependentUpon>
-    </Compile>
-    <Compile Update="Reporting\BillingPrint.Designer.cs">
-      <DependentUpon>BillingPrint.vsrepx</DependentUpon>
-    </Compile>
-    <Compile Update="Reporting\sample.cs">
-      <DependentUpon>sample.vsrepx</DependentUpon>
-    </Compile>
-    <Compile Update="Reporting\sample.Designer.cs">
-      <DependentUpon>sample.vsrepx</DependentUpon>
-    </Compile>
     <PackageReference Include="DevExtreme.AspNet.Core" Version="21.1.6" />
     <PackageReference Include="DevExtreme.AspNet.Data" Version="2.8.2" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="Reporting\PrintBills.cs">
+      <DependentUpon>PrintBills.vsrepx</DependentUpon>
+    </Compile>
+    <Compile Update="Reporting\PrintBills.Designer.cs">
+      <DependentUpon>PrintBills.vsrepx</DependentUpon>
+    </Compile>
   </ItemGroup>
 </Project>

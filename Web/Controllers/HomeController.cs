@@ -1,6 +1,7 @@
 ﻿using Business_Objects;
 using Business_Objects.Interfaces;
 using Business_Objects.Interfaces.Services;
+using DevExpress.XtraReports.Parameters;
 using DevExpress.XtraReports.UI;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -10,6 +11,7 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Web.Reporting;
+//using Web.Reporting;
 using Web.ViewModels;
 
 namespace Web.Controllers
@@ -307,7 +309,9 @@ namespace Web.Controllers
 
         // [HttpPost]
         //public ActionResult Search(decimal? reqid)
-        //{
+        //{4
+
+
 
         //    var req = BillHeader.GetById(reqid);
         //    if (reqid.HasValue)
@@ -360,23 +364,36 @@ namespace Web.Controllers
             return View(Bill_Full);
         }
 
-        public ActionResult BillingPrint(int Id)
+
+
+        public IActionResult Viewer(int id)
         {
-
-            XtraReport rep = new XtraReport();
-            rep = BillingPrintReport(Id);
-
-           // ReportViewerExtension.ExportTo(rep, Request);
+            PrintBills rep = new PrintBills();
+            rep.Parameters["parameter1"].Value = id;
+            //Parameter param1 = new Parameter();
+            //param1.Name = "parameter1";
+            //param1.Type = typeof(System.Int32);
+            //param1.Value = id;
+            //rep.Parameters.Add(param1);
             return View(rep);
         }
+        //public ActionResult BillingPrint(int Id)
+        //{
+
+        //    XtraReport rep = new XtraReport();
+        //    rep = BillingPrintReport(Id);
+
+        //   // ReportViewerExtension.ExportTo(rep, Request);
+        //    return View(rep);
+        //}
 
 
-        protected XtraReport BillingPrintReport(int  Id)
-        {
-            BillingPrint rep = new BillingPrint();
-            return rep;
+        //protected XtraReport BillingPrintReport(int  Id)
+        //{
+        //    BillingPrint rep = new BillingPrint();
+        //    return rep;
 
-        }
+        //}
 
 
     }

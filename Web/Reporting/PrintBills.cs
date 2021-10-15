@@ -3,11 +3,12 @@ using DevExpress.XtraReports.UI;
 
 namespace Web.Reporting
 {
-    public partial class sample
+    public partial class PrintBills
     {
-        public sample()
+        public PrintBills()
         {
             InitializeComponent();
         }
+
     }
 }
